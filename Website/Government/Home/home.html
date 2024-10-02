@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="allcontainer">
+        <div class="left-container">
+            <div class="heading">
+                <img src="../Assets/guju.png" height="86px" width="48px" alt="Logo"></img>
+                <h2>GEMS</h2>
+            </div>
+            <div class="left-inner-container">
+                <ul>
+                    <li class="color">Home</li>
+                    <a href="./../Dashboard/dashboard.html"><li>Dashboard</li></a>
+                    <a href="./../all-students.html">
+                        <li>Student</li>
+                    </a>
+                    <a href="../common-pool.html"><li>Common Pool</li></a>
+                    <li>Staff</li>
+                    <li>Attendence</li>
+                    <li>Admissions</li>
+                    <button style="background-color: transparent; border: transparent;" onclick="signo()"><li >Sign Out</li></button>
+                </ul>
+            </div>
+        </div>
+            <div class="top-container">
+                <div class="top-inner-container">
+                        <h2 class="h2">Government Education Management System</h2>
+                </div>
+                <div class="middle-center-container">
+                    <center><h2>Dropout Analysis</h2></center>
+                    <div class="middle-container">
+                        <div class="card1" >
+                            <center>
+                                <h2>Caste wise analysis</h2>
+                            </center>
+                            <canvas class="card  myChart" id="myChart1"></canvas>
+                        </div>
+                        
+                        <div class="card1">
+                            <center>
+                                <h2>Class wise analysis</h2>
+                            </center>
+                            <canvas class="card  myChart" id="myChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>
+<script
+src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+<script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+<script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics-compat.js"></script>
+<script src="../../firebase-config.js"></script>

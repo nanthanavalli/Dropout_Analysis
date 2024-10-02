@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- <link rel="stylesheet" href="dashboard.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #f0f0f5;
+}
+
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+
+    /* Styles for the modal */
+.modal {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 90vw;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-height: 80vh; /* Set a maximum height for scrollability */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+}
+
+.allcontainer{
+    display: flex;
+}
+
+.left-container{
+    background-color: white;
+    width: 100%;
+    height: auto;
+    /* background-color: aqua; */
+    /* box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 -20px 25px -5px rgba(0, 0, 0, 0.1), 0 -10px 10px -5px rgba(0, 0, 0, 0.04); */
+}
+
+.left-container h2{
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+    font-size: x-large;
+}
+
+.left-inner-container{
+    width: 100%;
+    /* background-color: blue; */
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+}
+ul{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+li{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+    list-style-type: none;
+    font-size: large;
+    padding: 14px 50px;
+    border-radius: 10px;
+}
+
+li:hover{
+    background-color: #f99191;
+    color: #f0f0f5;
+    transition: 0.3s ease-in-out;
+}
+
+.color{
+    color: white;
+    background-color: #FFA8A8;
+}
+
+.top-container{
+    /* background-color: #560bad; */
+    display: flex;
+    flex-direction: column;
+}
+
+.top-inner-container{
+    width: 85vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.heading{
+    display: flex;
+    justify-content: center;
+}
+
+.heading img{
+    margin-top: 10px;
+    margin-right: 5px;
+}
+.top-inner-container img{
+    margin:15px 40px;
+}
+
+.top-container .h2{
+    padding: 30px 0;
+    margin-left: 60px;
+}
+
+input{
+    margin: 33px 0;
+    background-color: #f0f0f5;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+    font-size: large;
+    padding: 0 20px;
+}
+
+.middle-center-container{
+    height: 100%;
+    margin: 30px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 -20px 25px -5px rgba(0, 0, 0, 0.1), 0 -10px 10px -5px rgba(0, 0, 0, 0.04); ;
+}
+
+.middle-center-container center h2{
+    margin: 20px;
+}
+
+.middle-container {
+    display: grid;
+    gap: 40px 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+}
+
+.card1{
+    /* height: 100rem; */
+    border: 1px solid transparent;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 -20px 25px -5px rgba(0, 0, 0, 0.1), 0 -10px 10px -5px rgba(0, 0, 0, 0.04);   
+}
+
+ul a{
+    text-decoration: none;
+    color: black;
+}
+
+#close-button {
+position: absolute;
+top: 28px;
+right: 10px;
+background-color: transparent;
+border: none;
+font-weight: bolder;
+color: rgb(255, 88, 88);
+}
+    </style>
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <button id="close-button"
+                onclick="closeOverlay()"><span
+                    class="material-symbols-outlined"
+                    style="  font-variation-settings:
+                'FILL' 0,
+                'wght' 1000,
+                'GRAD' 0,
+                'opsz' 24">
+                    close
+                </span></button>
+
+                <div class="middle-container">
+                    <div class="card1" >
+                        <center>
+                            <h2>Caste wise analysis</h2>
+                        </center>
+                        <canvas class="card  myChart" id="overlayChart1"></canvas>
+                    </div>
+                    
+                    <div class="card1">
+                        <center>
+                            <h2>Class wise analysis</h2>
+                        </center>
+                        <canvas class="card  myChart" id="overlayChart2"></canvas>
+                    </div>
+
+                    <div class="card1">
+                        <center>
+                            <h2>Class wise analysis</h2>
+                        </center>
+                        <canvas class="card  myChart" id="overlayChart3"></canvas>
+                    </div>
+                    
+                    <div class="card1">
+                        <center>
+                            <h2>Class wise analysis</h2>
+                        </center>
+                        <canvas class="card  myChart" id="overlayChart4"></canvas>
+                    </div>
+
+                    <div class="card1">
+                        <center>
+                            <h2>Class wise analysis</h2>
+                        </center>
+                        <canvas class="card  myChart" id="overlayChart5"></canvas>
+                    </div>
+                    
+                    <div class="card1">
+                        <center>
+                            <h2>Class wise analysis</h2>
+                        </center>
+                        <canvas class="card  myChart" id="overlayChart6"></canvas>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+    <div class="allcontainer">
+        <div class="left-container">
+            <div class="heading">
+                <img src="/Government/Assets/guju.png" height="86px" width="48px" alt="`"/>
+                <h2>GEMS</h2>
+            </div>
+            <div class="left-inner-container">
+                <ul>
+                    <!-- <a href="./../Home/home.html"><li>Home</li></a> -->
+                    <li class="color">Dashboard</li>
+                    <a href="../all-students.html">
+                        <li>Student</li>
+                    </a>
+                    <a href="./../common-pool.html"><li>Common Pool</li></a>
+                    <li>Staff</li>
+                    <li>Attendence</li>
+                    <li>Admissions</li>
+                    <button style="background-color: transparent; border: transparent;" onclick="signo()"><li >Sign Out</li></button>
+                </ul>
+            </div>
+        </div>
+            <div class="top-container">
+                <div class="top-inner-container">
+                    <div></div>
+                    <h2 class="h2">Gujarat Education Management System</h2>
+                    <div id="google_translate_element"></div>
+                </div>
+                <div class="middle-center-container">
+                    <center><h2>Dropout Analysis</h2></center>
+                    <div class="middle-container">
+                        <div class="card1" >
+                            <center>
+                                <h2>Gender wise analysis</h2>
+                            </center>
+                            <canvas class="card  myChart" id="myChart1"></canvas>
+                        </div>
+                        
+                        <div class="card1">
+                            <center>
+                                <h2>Class wise analysis</h2>
+                            </center>
+                            <canvas class="card  myChart" id="myChart2"></canvas>
+                        </div>
+
+                        <div class="card1">
+                            <center>
+                                <h2>Community wise analysis</h2>
+                            </center>
+                            <canvas class="card  myChart" id="myChart3"></canvas>
+                        </div>
+                        
+                        <div class="card1">
+                            <center>
+                                <h2>Discontinue Reason wise analysis</h2>
+                            </center>
+                            <canvas class="card  myChart" id="myChart4"></canvas>
+                        </div>
+
+                        <div class="card1">
+                            <center>
+                                <h2>School wise analysis</h2>
+                            </center>
+                            <canvas class="card  myChart" id="myChart5"></canvas>
+                        </div>
+                        
+                        <div class="card1">
+                            <center>
+                                <h2>District wise analysis</h2>
+                            </center>
+                            <canvas class="card  myChart" id="myChart6"></canvas>
+                        </div>
+                        
+                        <div class="card1">
+                            <center>
+                                <h2>School type wise analysis</h2>
+                            </center>
+                            <canvas class="card  myChart" id="myChart7"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const color = ["#b91d47", "#00aba9", "#2b5797", "#9c27b0", "#ff9800", "#009688", "#cddc39"];
+
+window.addEventListener('load', (e) => {
+    fetchDataFromFlask();
+})
+
+function fetchDataFromFlask() {
+
+    // Fetch analytics data from Flask
+    fetch('/get_data')
+        .then((response) => response.json())
+        .then((data) => {
+            createChart("myChart1", "doughnut", "gender", data[0], color)
+            createChart("myChart2", "pie", "class", data[1], color)
+            createChart("myChart3", "pie", "community", data[2], color)
+            createChart("myChart4", "doughnut", "discontinueReason", data[3], color)
+            createChart("myChart5", "pie", "school", data[4], color)
+            createChart("myChart6", "doughnut", "district", data[5], color)
+            createChart("myChart7", "pie", "schoolType", data[6], color)
+
+
+        });
+
+    function getCustomDataFromFlask(str,title) {
+    fetch('/custom_data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify([str,title])
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            createChart("overlayChart1", "pie", data[1][0], data[0][0], color)
+            createChart("overlayChart2", "pie", data[1][1], data[0][1], color)
+            createChart("overlayChart3", "pie", data[1][2], data[0][2], color)
+            createChart("overlayChart4", "pie", data[1][3], data[0][3], color)
+            createChart("overlayChart5", "pie", data[1][4], data[0][4], color)
+            createChart("overlayChart6", "pie", data[1][5], data[0][5], color)
+        });
+}
+
+
+    function createChart(canvasId, type, text_attr, data, color) {
+        const xValues = data[0];
+        const yValues = data[1];
+        const canvas = document.getElementById(canvasId);
+        const ctx = canvas.getContext('2d');
+        let chart;
+        if (type == 'bar') {
+            console.log(xValues, yValues)
+            if(chart){
+                chart.destroy();
+            }
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        label:'Count',
+                        backgroundColor: color,
+                        data: yValues,
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: text_attr
+                        }
+                    }
+
+                }
+            });
+
+
+            canvas.onclick = (evt) => {
+                const res = chart.getElementsAtEventForMode(
+                    evt,
+                    'nearest', {
+                        intersect: true
+                    },
+                    true
+                );
+                if (res.length === 0) {
+                    return;
+                }
+                openOverlay();
+                getCustomDataFromFlask(chart.data.labels[res[0].index],text_attr);
+            };
+        } else if (type == 'pie') {
+            console.log(xValues, yValues)
+            
+            const chart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        label:'Count',
+                        backgroundColor: color,
+                        data: yValues,
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: text_attr
+                        }
+                    }
+
+                }
+            });
+
+
+            canvas.onclick = (evt) => {
+                const res = chart.getElementsAtEventForMode(
+                    evt,
+                    'nearest', {
+                        intersect: true
+                    },
+                    true
+                );
+                if (res.length === 0) {
+                    return;
+                }
+                openOverlay();
+                getCustomDataFromFlask(chart.data.labels[res[0].index],text_attr);
+
+            };
+        } else {
+            console.log(xValues, yValues)
+            const chart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        label:'Count',
+                        backgroundColor: color,
+                        data: yValues,
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: text_attr
+                        }
+                    }
+
+                }
+            });
+
+
+            canvas.onclick = (evt) => {
+                const res = chart.getElementsAtEventForMode(
+                    evt,
+                    'nearest', {
+                        intersect: true
+                    },
+                    true
+                );
+                if (res.length === 0) {
+                    return;
+                }
+                openOverlay();
+                getCustomDataFromFlask(chart.data.labels[res[0].index],text_attr);
+
+            };
+        }
+    }
+}
+
+function openOverlay() {
+    document.getElementById("modal-overlay").style.display = "flex";
+
+}
+
+function closeOverlay() {
+    // Hide the modal overlay
+    document.getElementById("modal-overlay").style.display = "none";
+    window.location.href="http://127.0.0.1:5000/";
+}
+
+
+</script>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+    </script>
+    
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script
+src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+<script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+<script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics-compat.js"></script>
+<script src="../../firebase-config.js"></script>
+</body>
+</html>

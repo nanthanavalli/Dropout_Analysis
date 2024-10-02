@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="center">
+        <div class="center-box">
+            <div class="photo"><img src="./Assets/gujarat-education-department--4facefbd.jpg" alt="Photo">
+                <h2>Gujarat Education Management System</h2>
+            </div>
+            <div class="cen-log">
+
+                <div class="center-form" id="login">
+                    <h2>Government Portal</h2>
+                    <form id="login-form">
+                        <label for="emis">Username</label>
+                        <br>
+                        <input type="text" name="emis" id="emis" placeholder="Username" required>
+                        <br>
+                        <label for="password">Password</label>
+                        <br>
+                        <input type="password" name="password" id="password" placeholder="*******" required>
+                        <br>
+                        <center>
+                            <button type="submit" id="submit" class="button">Login</button>
+                        </center>
+                        <p id="error" style="color: rgb(255, 82, 82); font-weight: 500;"></p>
+                    </form>
+                </div>
+            </div>
+            </div>
+        
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics-compat.js"></script>
+    <script src="../firebase-config.js"></script>
+    <script src="../authentication.js"></script>
+
+</body>
+</html>

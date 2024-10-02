@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>       
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="allcontainer">
+        <div class="left-container">
+            <h2>GEMS</h2>
+            <div class="left-inner-container">
+                <ul>
+                    <li class="color">Dashboard</li>
+                    <a href="../student.html">
+                        <li>Student</li>
+                    </a>
+                    <li>Search</li>
+                    <li>Staff</li>
+                    <li>Attendence</li>
+                    <li>Admissions</li>
+                    <button style="background-color: transparent; border: transparent;" onclick="signo()"><li >Sign Out</li></button>
+                </ul>
+            </div>
+        </div>
+            <div class="top-container">
+                <div class="top-inner-container">
+                    <h2 class="h2">Dashboard</h2>
+                    <input type="text" name="text" id="text" placeholder="search">
+                    <i>Logo</i>
+                </div>
+                <div class="middle-center-container">
+                    <div class="middle-container">
+                        <div class="card merged-card">Card 1</div>
+                        <div class="card">Card 2</div>
+                        <div class="card">Card 3</div>
+                        <div class="card">Card 4</div>
+                        <div class="card">Card 5</div>
+                        <div class="card">Card 6</div>
+                        <div class="card">Card 7</div>
+                        <div class="card">Card 8</div>
+                        <div class="card">Card 9</div>
+                        <div class="card">Card 10</div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+<script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+<script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics-compat.js"></script>
+<script src="../../firebase-config.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

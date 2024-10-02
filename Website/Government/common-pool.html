@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="allcontainer">
+        <div class="left-container">
+            <div class="heading">
+                <img src="./Assets/guju.png" height="86px" width="48px" alt="Logo"></img>
+                <h2>GEMS</h2>
+            </div>
+            <div class="left-inner-container">
+                <ul>
+                    <!-- <a href="./Home/home.html"><li>Home</li></a> -->
+                    <a href="./Dashboard/dashboard.html"><li>Dashboard</li></a>
+                    <a href="./all-students.html">
+                        <li>Student</li>
+                    </a> 
+                    <li class="color">Common Pool</li>
+                    <li>Staff</li>
+                    <li>Attendence</li>
+                    <li>Admissions</li>
+                    <button style="background-color: transparent; border: transparent;" onclick="signo()"><li >Sign Out</li></button>
+                </ul>
+            </div>
+        </div>
+            <div class="top-container">
+                <div class="top-inner-container">
+                    <div></div>
+                    <h2 class="h2">Gujarat Education Management System</h2>
+                    <div id="google_translate_element"></div>
+                </div>
+                <div class="middle-center-container">
+                    <center><h2>All Student Details</h2></center>
+                    <table id="pool-table">
+                        <thead>
+                            <tr>
+                                <th class="th">S.No</th>
+                                <th class="th">USI (Unique Student Identifier)</th>
+                                <th class="th">Name</th>
+                                <th class="th">Gender</th>
+                                <th class="th">Class</th>
+                                <th class="th">School Name</th>
+                                <th class="th">School type</th>
+                                <th class="th">Discontinue Reason</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows will be dynamically populated here -->
+                        </tbody>
+                    </table>
+                    <div class="modal-overlay" id="modal-overlay">
+                        <div class="modal">
+                            <button id="close-button"
+                                onclick="closeStudentDetailsModel()"><span
+                                    class="material-symbols-outlined"
+                                    style="  font-variation-settings:
+                                'FILL' 0,
+                                'wght' 1000,
+                                'GRAD' 0,
+                                'opsz' 24">
+                                    close
+                                </span></button>
+    
+                            <h2>Student Personal Information</h2>
+    
+                            <label for="name">Name of the student:</label>
+                            <input type="text" id="name" name="name" readonly>
+    
+                            <label for="usiNo">USI Number:</label>
+                            <input type="text" id="usiNo" name="usiNo"
+                                placeholder="Unique Student Identifier" readonly>
+    
+                            <label for="aadhaar">Aadhaar Number:</label>
+                            <input type="text" id="aadhaar" name="aadhaar" readonly>
+    
+                            <label for="DOB">Date of Birth:</label>
+                            <input type="date" id="DOB" name="DOB" readonly>
+    
+                            <label for="gender">Gender</label>
+                            <select name="gender" id="gender" disabled>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Others">Others</option>
+                            </select>
+    
+                            <label for="blood-group">Blood Group</label>
+                            <select name="blood-group" id="blood-group" disabled>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+    
+                            <label for="mother-tounge">Mother Tounge</label>
+                            <select name="mother-tounge" id="mother-tounge" disabled>
+                                <option value="Tamil">Tamil</option>
+                                <option value="Assamese">Assamese</option>
+                                <option value="Bangla">Bangla</option>
+                                <option value="Bodo">Bodo</option>
+                                <option value="Dogri">Dogri</option>
+                                <option value="Gujarati">Gujarati</option>
+                                <option value="Hindi">Hindi</option>
+                                <option value="Kashmiri">Kashmiri</option>
+                                <option value="Kannada">Kannada</option>
+                                <option value="Konkani">Konkani</option>
+                                <option value="Maithili">Maithili</option>
+                                <option value="Malayalam">Malayalam</option>
+                                <option value="Manipuri">Manipuri</option>
+                                <option value="Marathi">Marathi</option>
+                                <option value="Nepali">Nepali</option>
+                                <option value="Oriya">Oriya</option>
+                                <option value="Punjabi">Punjabi</option>
+                                <option value="Telugu">Telugu</option>
+                                <option value="Santali">Santali</option>
+                                <option value="Sindhi">Sindhi</option>
+                                <option value="Urdu">Urdu</option>
+                                <option value="Others">Others</option>
+                            </select>
+    
+                            <label for="religion">Religion</label>
+                            <select name="religion" id="religion" disabled>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Christian">Christian</option>
+                                <option value="Sikh">Sikh</option>
+                                <option value="Buddhism">Buddhism</option>
+                                <option value="Jain">Jain</option>
+                                <option value="Zoroastrianism">Zoroastrianism</option>
+                                <option value="Judaism">Judaism</option>
+                            </select>
+    
+                            <label for="community">Community:</label>
+                            <select id="community" name="community" disabled>
+                                <option value="General">General</option>
+                                <option value="SEBC">SEBC</option>
+                                <option value="SC">SC</option>
+                                <option value="ST">ST</option>
+                                <option value="OBC">OBC</option>
+                                <option value="NT">NT</option>
+                                <option value="DT">DT</option>
+                                <!-- Add more specific castes as needed -->
+                            </select>
+    
+                            <h3>Family Details</h3>
+    
+                            <label for="fathers-name">Father's Name:</label>
+                            <input type="text" id="fathers-name" name="fathers-name" readonly>
+    
+                            <label for="fathers-occupation">Father's Occupation:</label>
+                            <select name="fathers-occupation"
+                                id="fathers-occupation" disabled>
+                                <option value="Engineer">Engineer</option>
+                                <option value="Doctor">Doctor</option>
+                                <option value="Teacher">Teacher</option>
+                                <option value="Accountant">Accountant</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Lawyer">Lawyer</option>
+                                <option value="Business Owner">Business Owner</option>
+                                <option value="Retired">Retired</option>
+                                <option value="Driver">Driver</option>
+                                <option value="Farmer">Farmer</option>
+                                <option value="Sales Representative">Sales
+                                    Representative</option>
+                                <option value="Government Employee">Government
+                                    Employee</option>
+                                <option value="IT Professional">IT Professional</option>
+                                <option value="Construction Worker">Construction
+                                    Worker</option>
+                                <option value="Labour">Labour</option>
+                                <option value="Artist">Artist</option>
+                                <option value="Chef">Chef</option>
+                                <option value="Other">Other</option>
+                            </select>
+    
+                            <label for="fathers-education">Father's Education Level:</label>
+                            <select name="fathers-education" id="fathers-education" disabled>
+                                <option value="No Formal Education">No Formal
+                                    Education</option>
+                                <option value="Primary School">Primary School</option>
+                                <option value="Middle School">Middle School</option>
+                                <option value="High School">High School</option>
+                                <option value="Vocational/Trade School">Vocational/Trade
+                                    School</option>
+                                <option value="Some College/Associate's Degree">Some
+                                    College/Associate's Degree</option>
+                                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                <option value="Master's Degree">Master's Degree</option>
+                                <option value="Doctorate/Ph.D.">Doctorate/Ph.D.</option>
+                                <option value="Other/Unknown">Other/Unknown</option>
+                            </select>
+    
+                            <label for="mothers-name">Mother's Name:</label>
+                            <input type="text" id="mothers-name" name="mothers-name" readonly>
+    
+                            <label for="mothers-occupation">Mother's Occupation:</label>
+                            <select name="mothers-occupation"
+                                id="mothers-occupation" disabled>
+                                <option value="Nurse">Nurse</option>
+                                <option value="Teacher">Teacher</option>
+                                <option value="Homemaker">Homemaker</option>
+                                <option value="Doctor">Doctor</option>
+                                <option value="Accountant">Accountant</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Business Owner">Business Owner</option>
+                                <option value="Retired">Retired</option>
+                                <option value="Secretary">Secretary</option>
+                                <option value="Sales Representative">Sales
+                                    Representative</option>
+                                <option value="Government Employee">Government
+                                    Employee</option>
+                                <option value="IT Professional">IT Professional</option>
+                                <option value="Social Worker">Social Worker</option>
+                                <option value="Artist">Artist</option>
+                                <option value="Chef">Chef</option>
+                                <option value="Librarian">Librarian</option>
+                                <option value="Pharmacist">Pharmacist</option>
+                                <option value="Labour">Labour</option>
+                                <option value="Other">Other</option>
+                            </select>
+    
+                            <label for="mothers-education">Mother's Education Level:</label>
+                            <select name="mothers-education" id="mothers-education" disabled>
+                                <option value="No Formal Education">No Formal
+                                    Education</option>
+                                <option value="Primary School">Primary School</option>
+                                <option value="Middle School">Middle School</option>
+                                <option value="High School">High School</option>
+                                <option value="Vocational/Trade School">Vocational/Trade
+                                    School</option>
+                                <option value="Some College/Associate's Degree">Some
+                                    College/Associate's Degree</option>
+                                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                <option value="Master's Degree">Master's Degree</option>
+                                <option value="Doctorate/Ph.D.">Doctorate/Ph.D.</option>
+                                <option value="Other/Unknown">Other/Unknown</option>
+                            </select>
+    
+                            <label for="family-income">Family Income:</label>
+                            <input type="text" id="family-income"
+                                name="family-income" readonly>
+    
+                            <h3>Communication Details</h3>
+    
+                            <label for="mobile-number">Mobile Number:</label>
+                            <input type="text" id="mobile-number"
+                                name="mobile-number" readonly>
+    
+                            <label for="email-id">Email ID:</label>
+                            <input type="email" id="email-id" name="email-id" readonly>
+    
+                            <label for="city-name">City Name:</label>
+                            <select id="city-name" name="city-name" disabled>
+                                <option value="Lakhpat">Lakhpat</option>
+                                <option value="Rapar">Rapar</option>
+                                <option value="Bhachau">Bhachau</option>
+                                <option value="Anjar">Anjar</option>
+                                <option value="Bhuj">Bhuj</option>
+                                <option value="Nakhatrana">Nakhatrana</option>
+                                <option value="Abdasa">Abdasa</option>
+                                <option value="Mandvi">Mandvi</option>
+                                <option value="Mundra">Mundra</option>
+                                <option value="Gandhidham">Gandhidham</option>
+                                <option value="Vav">Vav</option>
+                                <option value="Tharad">Tharad</option>
+                                <option value="Dhanera">Dhanera</option>
+                                <option value="Dantiwada">Dantiwada</option>
+                                <option value="Amirgadh">Amirgadh</option>
+                                <option value="Danta">Danta</option>
+                                <option value="Vadgam">Vadgam</option>
+                                <option value="Palanpur">Palanpur</option>
+                                <option value="Deesa">Deesa</option>
+                                <option value="Deodar">Deodar</option>
+                                <option value="Bhabhar">Bhabhar</option>
+                                <option value="Kankrej">Kankrej</option>
+                                <option value="Santalpur">Santalpur</option>
+                                <option value="Radhanpur">Radhanpur</option>
+                                <option value="Sidhpur">Sidhpur</option>
+                                <option value="Patan">Patan</option>
+                                <option value="Harij">Harij</option>
+                                <option value="Sami">Sami</option>
+                                <option value="Chanasma">Chanasma</option>
+                                <option value="Satlasana">Satlasana</option>
+                                <option value="Kheralu">Kheralu</option>
+                                <option value="Unjha">Unjha</option>
+                                <option value="Visnagar">Visnagar</option>
+                                <option value="Vadnagar">Vadnagar</option>
+                                <option value="Vijapur">Vijapur</option>
+                                <option value="Mahesana">Mahesana</option>
+                                <option value="Becharaji">Becharaji</option>
+                                <option value="Kadi">Kadi</option>
+                                <option value="Khedbrahma">Khedbrahma</option>
+                                <option value="Vijaynagar">Vijaynagar</option>
+                                <option value="Vadali">Vadali</option>
+                                <option value="Idar">Idar</option>
+                                <option value="Bhiloda">Bhiloda</option>
+                                <option value="Meghraj">Meghraj</option>
+                                <option value="Himatnagar">Himatnagar</option>
+                                <option value="Prantij">Prantij</option>
+                                <option value="Talod">Talod</option>
+                                <option value="Modasa">Modasa</option>
+                                <option value="Dhansura">Dhansura</option>
+                                <option value="Malpur">Malpur</option>
+                                <option value="Bayad">Bayad</option>
+                                <option value="Kalol">Kalol</option>
+                                <option value="Mansa">Mansa</option>
+                                <option value="Gandhinagar">Gandhinagar</option>
+                                <option value="Dehgam">Dehgam</option>
+                                <option value="Mandal">Mandal</option>
+                                <option value="Detroj-Rampura">Detroj-Rampura</option>
+                                <option value="Viramgam">Viramgam</option>
+                                <option value="Sanand">Sanand</option>
+                                <option value="Ahmadabad City">Ahmadabad City</option>
+                                <option value="Daskroi">Daskroi</option>
+                                <option value="Dholka">Dholka</option>
+                                <option value="Bavla">Bavla</option>
+                                <option value="Ranpur">Ranpur</option>
+                                <option value="Barwala">Barwala</option>
+                                <option value="Dhandhuka">Dhandhuka</option>
+                                <option value="Halvad">Halvad</option>
+                                <option value="Dhrangadhra">Dhrangadhra</option>
+                                <option value="Dasada">Dasada</option>
+                                <option value="Lakhtar">Lakhtar</option>
+                                <option value="Wadhwan">Wadhwan</option>
+                                <option value="Muli">Muli</option>
+                                <option value="Chotila">Chotila</option>
+                                <option value="Sayla">Sayla</option>
+                                <option value="Chuda">Chuda</option>
+                                <option value="Limdi">Limdi</option>
+                                <option value="Maliya">Maliya</option>
+                                <option value="Morvi">Morvi</option>
+                                <option value="Tankara">Tankara</option>
+                                <option value="Wankaner">Wankaner</option>
+                                <option value="Paddhari">Paddhari</option>
+                                <option value="Rajkot">Rajkot</option>
+                                <option value="Lodhika">Lodhika</option>
+                                <option value="Kotda Sangani">Kotda Sangani</option>
+                                <option value="Jasdan">Jasdan</option>
+                                <option value="Gondal">Gondal</option>
+                                <option value="Jamkandorna">Jamkandorna</option>
+                                <option value="Upleta">Upleta</option>
+                                <option value="Dhoraji">Dhoraji</option>
+                                <option value="Jetpur">Jetpur</option>
+                                <option value="Okhamandal">Okhamandal</option>
+                                <option value="Khambhalia">Khambhalia</option>
+                                <option value="Jamnagar">Jamnagar</option>
+                                <option value="Jodiya">Jodiya</option>
+                                <option value="Dhrol">Dhrol</option>
+                                <option value="Kalavad">Kalavad</option>
+                                <option value="Lalpur">Lalpur</option>
+                                <option value="Kalyanpur">Kalyanpur</option>
+                                <option value="Bhanvad">Bhanvad</option>
+                                <option value="Jamjodhpur">Jamjodhpur</option>
+                                <option value="Porbandar">Porbandar</option>
+                                <option value="Ranavav">Ranavav</option>
+                                <option value="Kutiyana">Kutiyana</option>
+                                <option value="Manavadar">Manavadar</option>
+                                <option value="Vanthali">Vanthali</option>
+                                <option value="Junagadh">Junagadh</option>
+                                <option value="Bhesan">Bhesan</option>
+                                <option value="Visavadar">Visavadar</option>
+                                <option value="Mendarda">Mendarda</option>
+                                <option value="Keshod">Keshod</option>
+                                <option value="Mangrol">Mangrol</option>
+                                <option value="Malia">Malia</option>
+                                <option value="Talala">Talala</option>
+                                <option value="Patan-Veraval">Patan-Veraval</option>
+                                <option value="Sutrapada">Sutrapada</option>
+                                <option value="Kodinar">Kodinar</option>
+                                <option value="Una">Una</option>
+                                <option value="Kunkavav Vadia">Kunkavav Vadia</option>
+                                <option value="Babra">Babra</option>
+                                <option value="Lathi">Lathi</option>
+                                <option value="Lilia">Lilia</option>
+                                <option value="Amreli">Amreli</option>
+                                <option value="Bagasara">Bagasara</option>
+                                <option value="Dhari">Dhari</option>
+                                <option value="Savarkundla">Savarkundla</option>
+                                <option value="Khambha">Khambha</option>
+                                <option value="Jafrabad">Jafrabad</option>
+                                <option value="Rajula">Rajula</option>
+                                <option value="Botad">Botad</option>
+                                <option value="Vallabhipur">Vallabhipur</option>
+                                <option value="Gadhada">Gadhada</option>
+                                <option value="Umrala">Umrala</option>
+                                <option value="Bhavnagar">Bhavnagar</option>
+                                <option value="Ghogha">Ghogha</option>
+                                <option value="Sihor">Sihor</option>
+                                <option value="Gariadhar">Gariadhar</option>
+                                <option value="Palitana">Palitana</option>
+                                <option value="Talaja">Talaja</option>
+                                <option value="Mahuva">Mahuva</option>
+                                <option value="Talaja">Talaja</option>
+                                <option value="Sojitra">Sojitra</option>
+                                <option value="Umreth">Umreth</option>
+                                <option value="Anand">Anand</option>
+                                <option value="Petlad">Petlad</option>
+                                <option value="Khambhat">Khambhat</option>
+                                <option value="Borsad">Borsad</option>
+                                <option value="Anklav">Anklav</option>
+                                <option value="Kapadvanj">Kapadvanj</option>
+                                <option value="Virpur">Virpur</option>
+                                <option value="Balasinor">Balasinor</option>
+                                <option value="Kathlal">Kathlal</option>
+                                <option value="Mehmedabad">Mehmedabad</option>
+                                <option value="Kheda">Kheda</option>
+                                <option value="Matar">Matar</option>
+                                <option value="Nadiad">Nadiad</option>
+                                <option value="Mahudha">Mahudha</option>
+                                <option value="Thasra">Thasra</option>
+                                <option value="Khanpur">Khanpur</option>
+                                <option value="Kadana">Kadana</option>
+                                <option value="Santrampur">Santrampur</option>
+                                <option value="Lunawada">Lunawada</option>
+                                <option value="Shehera">Shehera</option>
+                                <option value="Morwa (Hadaf)">Morwa (Hadaf)</option>
+                                <option value="Godhra">Godhra</option>
+                                <option value="Kalol">Kalol</option>
+                                <option value="Ghoghamba">Ghoghamba</option>
+                                <option value="Halol">Halol</option>
+                                <option value="Jambusar">Jambusar</option>
+                                <option value="Fata">Fata</option>
+                            </select>
+    
+                            <label for="district">District:</label>
+                            <select name="district" id="district" disabled>
+                                <option value="Banaskantha">Banaskantha</option>
+                                <option value="Patan">Patan</option>
+                                <option value="Mahesana">Mahesana</option>
+                                <option value="Sabarkantha">Sabarkantha</option>
+                                <option value="Gandhinagar">Gandhinagar</option>
+                                <option value="Ahmedabad">Ahmedabad</option>
+                                <option value="Surendranagar">Surendranagar</option>
+                                <option value="Rajkot">Rajkot</option>
+                                <option value="Jamnagar">Jamnagar</option>
+                                <option value="Porbandar">Porbandar</option>
+                                <option value="Junagadh">Junagadh</option>
+                                <option value="Amreli">Amreli</option>
+                                <option value="Bhavnagar">Bhavnagar</option>
+                                <option value="Anand">Anand</option>
+                                <option value="Kheda">Kheda</option>
+                                <option value="Panchmahals">Panchmahals</option>
+                                <option value="Dahod">Dahod</option>
+                                <option value="Vadodara">Vadodara</option>
+                                <option value="Narmada">Narmada</option>
+                                <option value="Bharuch">Bharuch</option>
+                                <option value="The Dangs">The Dangs</option>
+                                <option value="Navsari">Navsari</option>
+                                <option value="Valsad">Valsad</option>
+                                <option value="Surat">Surat</option>
+                                <option value="Tapi">Tapi</option>
+                            </select>
+    
+                            <label for="pincode">Pincode:</label>
+                            <input type="text" id="pincode" name="pincode" readonly>
+    
+                            <h3>Academic Details</h3>
+    
+                            <label for="class">Class:</label>
+                            <select name="class" id="class" disabled>
+                                <option value="1st">1st</option>
+                                <option value="2nd">2nd</option>
+                                <option value="3rd">3rd</option>
+                                <option value="4th">4th</option>
+                                <option value="5th">5th</option>
+                                <option value="6th">6th</option>
+                                <option value="7th">7th</option>
+                                <option value="8th">8th</option>
+                                <option value="9th">9th</option>
+                                <option value="10th">10th</option>
+                                <option value="11th">11th</option>
+                                <option value="12th">12th</option>
+                            </select>
+    
+                            <label for="section">Section:</label>
+                            <select id="section" name="section" disabled>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="G">G</option>
+                                <option value="H">H</option>
+                                <option value="I">I</option>
+                                <option value="J">J</option>
+                                <option value="K">K</option>
+                                <option value="L">L</option>
+                                <option value="M">M</option>
+                                <option value="N">N</option>
+                                <option value="O">O</option>
+                            </select>
+    
+                            <label for="medium-of-instruction">Medium of
+                                Instruction:</label>
+                            <select name="medium-of-instruction"
+                                id="medium-of-instruction" disabled>
+                                <option value="English"></option>
+                                <option value="Tamil">Tamil</option>
+                                <option value="Assamese">Assamese</option>
+                                <option value="Bangla">Bangla</option>
+                                <option value="Bodo">Bodo</option>
+                                <option value="Dogri">Dogri</option>
+                                <option value="Gujarati">Gujarati</option>
+                                <option value="Hindi">Hindi</option>
+                                <option value="Kashmiri">Kashmiri</option>
+                                <option value="Kannada">Kannada</option>
+                                <option value="Konkani">Konkani</option>
+                                <option value="Maithili">Maithili</option>
+                                <option value="Malayalam">Malayalam</option>
+                                <option value="Manipuri">Manipuri</option>
+                                <option value="Marathi">Marathi</option>
+                                <option value="Nepali">Nepali</option>
+                                <option value="Oriya">Oriya</option>
+                                <option value="Punjabi">Punjabi</option>
+                                <option value="Telugu">Telugu</option>
+                                <option value="Santali">Santali</option>
+                                <option value="Sindhi">Sindhi</option>
+                                <option value="Urdu">Urdu</option>
+                                <option value="Others">Others</option>
+                            </select>
+    
+                            <!-- <label for="ac-percentage">Academic Percentage:</label>
+                            <input type="text" id="ac-percentage" name="ac-percentage"> -->
+    
+                            <h3>Bank Details</h3>
+    
+                            <label for="ifsc-code">IFSC Code:</label>
+                            <input type="text" id="ifsc-code" name="ifsc-code" readonly>
+    
+                            <label for="bank-name">Bank Name:</label>
+                            <select name="bank-name" id="bank-name" disabled>
+                                <option value="State Bank Of India">State Bank Of
+                                    India</option>
+                                <option value="Punjab National Bank">Punjab National
+                                    Bank</option>
+                                <option value="Indian Bank">Indian Bank</option>
+                                <option value="Central Bank Of India">Central Bank
+                                    Of India</option>
+                                <option value="ICICI Bank">ICICI Bank</option>
+                                <option value="HDFC Bank">HDFC Bank</option>
+                                <option value="Axis Bank">Axis Bank</option>
+                                <option value="IDBI Bank">IDBI Bank</option>
+                            </select>
+    
+                            <label for="account-no">Account Number:</label>
+                            <input type="text" id="account-no" name="account-no" readonly>
+    
+                            <label for="account-type">Account Type:</label>
+                            <select name="account-type" id="account-type" disabled>
+                                <option value="Joint">Joint</option>
+                                <option value="Individual">Individual</option>
+                            </select>
+    
+                            <div id="TC">
+                                <h3>Transfer Certificate</h3>
+    
+                                <label for="discontinue">Reason for discontinuing</label>
+                                <select name="discontinue" id="discontinue" disabled>
+                                    <option value="Planning For Another School">Planning
+                                        For Another School</option>
+                                    <option value="Health Issues">Health Issues</option>
+                                    <option value="Family Responsibilities">Family
+                                        Responsibilities</option>
+                                    <option value="Marriage">Marriage</option>
+                                    <option value="Pregnancy/Parenting">Pregnancy/Parenting</option>
+                                    <option value="Financial Constraints">Financial
+                                        Constraints</option>
+                                    <option value="Academic Struggles">Academic
+                                        Struggles</option>
+                                    <option value="Lack of Interest">Lack of
+                                        Interest</option>
+                                    <option value="Peer Pressure">Peer Pressure</option>
+                                    <option value="Bullying/Harassment">Bullying/Harassment</option>
+                                    <option value="Distance to School">Distance to
+                                        School</option>
+                                    <option value="Inadequate Teaching">Inadequate
+                                        Teaching</option>
+                                    <option value="Safety Concerns">Safety Concerns</option>
+                                    <option value="Transportation Issues">Transportation
+                                        Issues</option>
+                                    <option value="Parental Migration">Parental
+                                        Migration</option>
+                                    <option value="School Infrastructure">School
+                                        Infrastructure</option>
+                                    <option value="Teacher Absenteeism">Teacher
+                                        Absenteeism</option>
+                                    <option value="Physical Disabilities">Physical
+                                        Disabilities</option>
+                                    <option value="Mental Health Issues">Mental
+                                        Health Issues</option>
+                                    <option value="Lack of Awareness">Lack of
+                                        Awareness</option>
+                                    <option value="Other Personal Reasons">Other
+                                        Personal Reasons</option>
+                                    <option value="Planning For Another School"></option>
+                                </select>
+    
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+        
+
+            </div>
+        </div>
+    </div>
+    <script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+<script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+<script
+    src="https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics-compat.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+        </script>
+        
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+   
+<script src="../firebase-config.js"></script>
+<script src="commonPool.js"></script>
+</body>
+</html>
